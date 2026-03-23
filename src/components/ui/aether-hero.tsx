@@ -133,7 +133,8 @@ export default function AetherHero({
 
   // Init GL
   useEffect(() => {
-    const canvas = canvasRef.current!;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
     const gl = canvas.getContext('webgl2', { alpha: true, antialias: true });
     if (!gl) return;
     glRef.current = gl;

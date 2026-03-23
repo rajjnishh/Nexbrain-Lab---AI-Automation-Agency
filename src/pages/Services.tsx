@@ -147,7 +147,7 @@ export default function ServicesPage() {
                     {service.description}
                   </p>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                  <div className="flex flex-col gap-4 pt-2">
                     {service.features.map(feature => (
                       <div key={feature} className="flex items-center gap-3 group/feature">
                         <div className="w-1.5 h-1.5 rounded-full bg-brand-purple group-hover/feature:scale-150 transition-transform" />

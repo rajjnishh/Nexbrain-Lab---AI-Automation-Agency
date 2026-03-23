@@ -19,7 +19,7 @@ export default function Navbar() {
 
   const navLinks = [
     { name: 'Services', href: '/services', isDropdown: true },
-    { name: 'Case Studies', href: '/case-studies' },
+    { name: 'Our Clients', href: '/case-studies' },
     { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];

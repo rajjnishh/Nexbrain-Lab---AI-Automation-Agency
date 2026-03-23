@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ExternalLink, ArrowRight } from 'lucide-react';
+import { ExternalLink, ArrowRight, MessageCircle, Phone } from 'lucide-react';
 import Clients from '../components/sections/Clients';
 import Results from '../components/sections/Results';
 import CTASection from '../components/sections/CTASection';
@@ -35,10 +35,27 @@ export default function CaseStudiesPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-20"
         >
-          <h1 className="text-5xl md:text-7xl font-bold font-display mb-6 italic serif">Case Studies</h1>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto">
+          <h1 className="text-5xl md:text-7xl font-bold font-display mb-6 italic serif">Our Clients</h1>
+          <p className="text-xl text-white/60 max-w-2xl mx-auto mb-10">
             Real results for real businesses. See how we've transformed operations with AI.
           </p>
+          
+          <div className="flex items-center justify-center gap-6">
+            <a 
+              href="https://wa.me/919341743927" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-16 h-16 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all duration-300 shadow-lg shadow-green-500/20"
+            >
+              <MessageCircle size={28} />
+            </a>
+            <a 
+              href="tel:+919341743927"
+              className="w-16 h-16 rounded-full bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple hover:bg-brand-purple hover:text-white transition-all duration-300 shadow-lg shadow-brand-purple/20"
+            >
+              <Phone size={28} />
+            </a>
+          </div>
         </motion.div>
 
         <Clients />

@@ -13,7 +13,7 @@ const posts = [
   {
     title: "The Future of Content Creation: AI-Driven Workflows",
     excerpt: "Learn how to leverage AI to create high-quality content at scale without losing your brand's voice.",
-    author: "Kumar Rajnish",
+    author: "Rajnish",
     date: "Mar 10, 2026",
     image: "https://picsum.photos/seed/content/800/600"
   },

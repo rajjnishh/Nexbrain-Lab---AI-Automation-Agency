@@ -20,7 +20,7 @@ export default function Footer() {
             <h4 className="text-lg font-bold mb-8">Quick Links</h4>
             <ul className="space-y-4">
               <li><Link to="/services" className="text-white/40 hover:text-brand-purple transition-colors">Services</Link></li>
-              <li><Link to="/case-studies" className="text-white/40 hover:text-brand-purple transition-colors">Case Studies</Link></li>
+              <li><Link to="/case-studies" className="text-white/40 hover:text-brand-purple transition-colors">Our Clients</Link></li>
               <li><Link to="/blog" className="text-white/40 hover:text-brand-purple transition-colors">Blog</Link></li>
               <li><Link to="/contact" className="text-white/40 hover:text-brand-purple transition-colors">Contact Us</Link></li>
             </ul>
@@ -66,7 +66,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Nexbrain Lab. All rights reserved.
           </p>
           <p className="text-white/20 text-sm font-medium">
-            Built by <span className="text-white/40">Kumar Rajnish & Karan Singh</span>
+            Built by <span className="text-white/40">Rajnish & Karan Singh</span>
           </p>
         </div>
       </div>

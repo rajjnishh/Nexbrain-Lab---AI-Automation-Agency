@@ -17,7 +17,7 @@ export default function Founder() {
             <div className="relative aspect-[4/5] rounded-[40px] overflow-hidden border border-white/10 shadow-2xl shadow-brand-purple/10">
               <img
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1000&fit=crop&q=80"
-                alt="Kumar Rajnish - Founder"
+                alt="Rajnish - Founder"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
@@ -33,7 +33,7 @@ export default function Founder() {
               MEET THE FOUNDER
             </span>
             <h2 className="text-4xl md:text-6xl font-bold font-display mb-8 tracking-tight">
-              Kumar <span className="text-brand-purple">Rajnish</span>
+              <span className="text-brand-purple">Rajnish</span>
             </h2>
             <p className="text-xl text-white/70 leading-relaxed mb-10">
               Founder of Nexbrain Lab, building AI systems that help businesses grow on autopilot with co-founder Karan Singh.
