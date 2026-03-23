@@ -1,0 +1,116 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --color-brand-purple: #8b5cf6;
+  --color-brand-black: #09090b;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    cursor: none;
+  }
+  body {
+    @apply bg-brand-black text-white font-sans;
+  }
+  a, button, [role="button"], .interactive {
+    cursor: none;
+    @apply transition-all duration-300 ease-out;
+  }
+
+  /* Text links hover */
+  a:hover:not([class*="bg-"]):not([class*="btn"]):not(.aurora-btn) {
+    color: var(--color-brand-purple);
+    text-shadow: 0 0 10px rgba(139, 92, 246, 0.4);
+  }
+
+  /* Button and card hover */
+  button:hover, 
+  .glass:hover,
+  .btn:hover,
+  .aurora-btn:hover,
+  a[class*="bg-"]:hover,
+  button[class*="bg-"]:hover {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.4) !important;
+    transform: translateY(-3px) scale(1.01) !important;
+    border-color: rgba(139, 92, 246, 0.5) !important;
+  }
+
+  /* Specific for purple buttons to make them pop more */
+  .bg-brand-purple:hover, .aurora-btn--primary:hover {
+    background-color: #9d71fd !important; /* Slightly lighter purple */
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6) !important;
+  }
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-brand-purple);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--color-brand-purple);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+}
+
+.custom-cursor-ring.hovering {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(139, 92, 246, 0.15);
+  border-color: rgba(139, 92, 246, 0.6);
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-md border border-white/10;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-purple to-blue-400;
+}
+
+@keyframes ripple-out {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.ripple-effect {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3b82f6;
+  box-shadow: 0 0 20px #3b82f6;
+  pointer-events: none;
+  animation: ripple-out 0.8s ease-out forwards;
+  z-index: 9999;
+}
