@@ -275,11 +275,15 @@ export default function AetherHero({
           <h1
             style={{
               margin: 0,
-              fontSize: 'clamp(2.2rem, 6vw, 4.5rem)',
-              lineHeight: 1.04,
-              letterSpacing: '-0.02em',
+              fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
+              lineHeight: 0.9,
+              letterSpacing: '-0.04em',
               fontWeight: 700,
-              textShadow: '0 8px 48px rgba(0,0,0,0.65)',
+              textShadow: '0 10px 50px rgba(0,0,0,0.8)',
+              background: 'linear-gradient(to bottom, #ffffff, #8b5cf6)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontFamily: 'var(--font-display)',
             }}
           >
             {title}
@@ -288,13 +292,16 @@ export default function AetherHero({
           {subtitle ? (
             <p
               style={{
-                marginTop: '1rem',
-                fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-                lineHeight: 1.6,
-                opacity: 0.9,
-                textShadow: '0 6px 32px rgba(0,0,0,0.55)',
-                maxWidth: 900,
+                marginTop: '1.5rem',
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
+                lineHeight: 1.4,
+                opacity: 0.8,
+                textShadow: '0 4px 20px rgba(0,0,0,0.5)',
+                maxWidth: 800,
                 marginInline: align === 'center' ? 'auto' : undefined,
+                fontFamily: 'var(--font-serif)',
+                fontStyle: 'italic',
+                color: '#e2e8f0',
               }}
             >
               {subtitle}
@@ -315,16 +322,20 @@ export default function AetherHero({
                   href={ctaHref}
                   className="aurora-btn aurora-btn--primary"
                   style={{
-                    padding: '12px 18px',
-                    borderRadius: 12,
-                    background:
-                      'linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.06))',
+                    padding: '16px 32px',
+                    borderRadius: 14,
+                    background: '#000000',
                     color: textColor,
                     textDecoration: 'none',
-                    fontWeight: 600,
-                    boxShadow:
-                      'inset 0 0 0 1px rgba(255,255,255,.28), 0 10px 30px rgba(0,0,0,.2)',
-                    backdropFilter: 'blur(6px) saturate(120%)',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    boxShadow: '0 20px 40px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.1)',
+                    border: '1px solid rgba(139, 92, 246, 0.4)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
                   }}
                 >
                   {ctaLabel}
@@ -336,15 +347,19 @@ export default function AetherHero({
                   href={secondaryCtaHref}
                   className="aurora-btn aurora-btn--ghost"
                   style={{
-                    padding: '12px 18px',
-                    borderRadius: 12,
-                    background: 'transparent',
+                    padding: '16px 32px',
+                    borderRadius: 14,
+                    background: 'rgba(255,255,255,0.03)',
                     color: textColor,
-                    opacity: 0.85,
                     textDecoration: 'none',
                     fontWeight: 600,
-                    boxShadow: 'inset 0 0 0 1px rgba(255,255,255,.28)',
-                    backdropFilter: 'blur(2px)',
+                    fontSize: '1rem',
+                    letterSpacing: '0.05em',
+                    textTransform: 'uppercase',
+                    boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.1)',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
                   }}
                 >
                   {secondaryCtaLabel}
