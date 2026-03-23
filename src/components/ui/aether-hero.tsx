@@ -74,7 +74,7 @@ export default function AetherHero({
   /* Content */
   title = 'Make the impossible feel inevitable.',
   subtitle = 'A minimal hero with a living shader background. Built for product landings, announcements, and portfolio intros.',
-  ctaLabel = 'Get Started',
+  ctaLabel = 'Book a Free Call',
   ctaHref = '#',
   secondaryCtaLabel,
   secondaryCtaHref,
@@ -279,7 +279,7 @@ export default function AetherHero({
               lineHeight: 1.04,
               letterSpacing: '-0.02em',
               fontWeight: 700,
-              textShadow: '0 6px 36px rgba(0,0,0,0.45)',
+              textShadow: '0 8px 48px rgba(0,0,0,0.65)',
             }}
           >
             {title}
@@ -292,7 +292,7 @@ export default function AetherHero({
                 fontSize: 'clamp(1rem, 2vw, 1.25rem)',
                 lineHeight: 1.6,
                 opacity: 0.9,
-                textShadow: '0 4px 24px rgba(0,0,0,0.35)',
+                textShadow: '0 6px 32px rgba(0,0,0,0.55)',
                 maxWidth: 900,
                 marginInline: align === 'center' ? 'auto' : undefined,
               }}

@@ -9,6 +9,11 @@ export default function Navbar() {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const location = useLocation();
 
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    return location.pathname === path || location.pathname.startsWith(path);
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -57,13 +62,19 @@ export default function Navbar() {
                 >
                   <Link
                     to={link.href}
-                    className={`px-6 py-2.5 rounded-full text-lg font-serif transition-all flex items-center gap-2 ${
-                      location.pathname === link.href
-                        ? 'text-brand-purple italic'
-                        : 'text-white/70 hover:text-white italic'
+                    className={`px-6 py-2.5 rounded-full text-lg font-serif transition-all flex items-center gap-2 relative ${
+                      isActive(link.href)
+                        ? 'text-brand-purple italic bg-brand-purple/10'
+                        : 'text-white/70 hover:text-white italic hover:bg-white/5'
                     }`}
                   >
                     {link.name} <ChevronDown size={14} className={`transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                    {isActive(link.href) && (
+                      <motion.div
+                        layoutId="activeNav"
+                        className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-purple rounded-full shadow-[0_0_8px_#8b5cf6]"
+                      />
+                    )}
                   </Link>
 
                   {/* Dropdown Menu */}
@@ -93,13 +104,19 @@ export default function Navbar() {
               ) : (
                 <Link
                   to={link.href}
-                  className={`px-6 py-2.5 rounded-full text-lg font-serif transition-all ${
-                    location.pathname === link.href
-                      ? 'text-brand-purple'
-                      : 'text-white/70 hover:text-white'
+                  className={`px-6 py-2.5 rounded-full text-lg font-serif transition-all relative ${
+                    isActive(link.href)
+                      ? 'text-brand-purple bg-brand-purple/10'
+                      : 'text-white/70 hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {link.name}
+                  {isActive(link.href) && (
+                    <motion.div
+                      layoutId="activeNav"
+                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-purple rounded-full shadow-[0_0_8px_#8b5cf6]"
+                    />
+                  )}
                 </Link>
               )}
             </div>
@@ -112,7 +129,7 @@ export default function Navbar() {
             href="https://calendly.com/info-rajnishh/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-3 bg-brand-purple hover:bg-brand-purple/90 text-white rounded-full text-sm font-bold transition-all shadow-lg shadow-brand-purple/20"
+            className="px-8 py-3 bg-brand-purple hover:bg-brand-purple/90 text-white rounded-full text-sm font-bold transition-all shadow-lg shadow-brand-purple/20 hover:shadow-brand-purple/40 hover:-translate-y-0.5 active:translate-y-0 inline-block"
           >
             Book a Free Call
           </a>
@@ -138,15 +155,20 @@ export default function Navbar() {
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <div key={link.name}>
+                <div key={link.name} className="relative">
                   <Link
                     to={link.href}
-                    className={`text-2xl font-serif block ${
-                      location.pathname === link.href ? 'text-brand-purple italic' : 'text-white/70'
+                    className={`text-2xl font-serif block transition-all ${
+                      isActive(link.href) ? 'text-brand-purple italic translate-x-2' : 'text-white/70'
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    {link.name}
+                    <div className="flex items-center gap-3">
+                      {isActive(link.href) && (
+                        <div className="w-1.5 h-1.5 bg-brand-purple rounded-full shadow-[0_0_8px_#8b5cf6]" />
+                      )}
+                      {link.name}
+                    </div>
                   </Link>
                   {link.isDropdown && (
                     <div className="mt-4 ml-6 flex flex-col gap-4 border-l border-white/10 pl-6">
@@ -169,7 +191,7 @@ export default function Navbar() {
                 href="https://calendly.com/info-rajnishh/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-5 bg-brand-purple text-center text-white rounded-2xl font-bold text-xl"
+                className="w-full py-5 bg-brand-purple text-center text-white rounded-2xl font-bold text-xl shadow-lg shadow-brand-purple/20"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Book a Free Call

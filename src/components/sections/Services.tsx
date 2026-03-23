@@ -66,9 +66,10 @@ export default function Services() {
               key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02 }}
               transition={{ delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="glass p-8 rounded-3xl hover:bg-white/10 transition-all group border-white/5"
+              className="glass p-8 rounded-3xl hover:bg-white/10 transition-all group border-white/5 hover:border-brand-purple/50"
             >
               <div
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-transform group-hover:scale-110"

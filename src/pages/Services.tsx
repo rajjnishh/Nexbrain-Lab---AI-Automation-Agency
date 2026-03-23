@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Bot, Star, Phone, Globe, Share2, Target, PenTool } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
-import HowItWorks from '../components/sections/HowItWorks';
 import CTASection from '../components/sections/CTASection';
 
 const services = [
@@ -103,9 +102,10 @@ export default function ServicesPage() {
               id={service.title.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.01 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center`}
+              className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-12 lg:gap-16 items-center p-8 md:p-12 rounded-[48px] border border-white/5 bg-white/[0.01] transition-all duration-500 hover:border-brand-purple/50 hover:bg-white/[0.03] group/card`}
             >
               {/* Image Side */}
               <div className="w-full lg:w-1/2">
@@ -173,10 +173,6 @@ export default function ServicesPage() {
               </div>
             </motion.div>
           ))}
-        </div>
-
-        <div className="mt-32">
-          <HowItWorks />
         </div>
 
         <CTASection />

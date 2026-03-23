@@ -8,11 +8,13 @@ export default function HomePage() {
       <div className="relative min-h-screen flex items-center">
         <AetherHero
           title="Automate Your Business Growth with AI-Powered Solutions"
-          subtitle="More leads. More bookings. Less manual work."
+          subtitle="Let AI handle the heavy lifting, so you can focus on growing your business."
           ctaLabel="Book a Free Call"
           ctaHref="https://calendly.com/info-rajnishh/30min"
-          align="left"
-          overlayGradient="linear-gradient(90deg, #09090bbb 0%, #09090b88 40%, transparent 100%)"
+          secondaryCtaLabel="+91 9341743927"
+          secondaryCtaHref="tel:+919341743927"
+          align="center"
+          overlayGradient="linear-gradient(180deg, #00000099, #00000040 40%, transparent)"
           className="w-full"
         />
       </div>
