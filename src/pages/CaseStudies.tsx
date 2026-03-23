@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ExternalLink, ArrowRight } from 'lucide-react';
+import Clients from '../components/sections/Clients';
+import Results from '../components/sections/Results';
+import CTASection from '../components/sections/CTASection';
 
 const cases = [
   {
@@ -38,7 +41,9 @@ export default function CaseStudiesPage() {
           </p>
         </motion.div>
 
-        <div className="space-y-32">
+        <Clients />
+
+        <div className="space-y-32 mt-32">
           {cases.map((study, index) => (
             <motion.div
               key={study.title}
@@ -77,6 +82,12 @@ export default function CaseStudiesPage() {
             </motion.div>
           ))}
         </div>
+
+        <div className="mt-32">
+          <Results />
+        </div>
+
+        <CTASection />
       </div>
     </div>
   );

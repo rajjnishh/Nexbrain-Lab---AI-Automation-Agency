@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ArrowRight, Instagram, Linkedin, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
   return (
@@ -53,16 +53,26 @@ export default function ContactPage() {
 
               <div className="flex items-center gap-6 group">
                 <div className="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center group-hover:bg-brand-purple transition-colors">
+                  <MessageCircle size={24} className="text-brand-purple group-hover:text-white" />
+                </div>
+                <div>
+                  <p className="text-white/40 text-sm font-bold uppercase tracking-widest mb-1">WhatsApp Us</p>
+                  <a href="https://wa.me/919341743927" target="_blank" rel="noopener noreferrer" className="text-xl font-bold hover:text-brand-purple transition-colors">+91 9341743927</a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-6 group">
+                <div className="w-16 h-16 rounded-2xl bg-brand-purple/10 flex items-center justify-center group-hover:bg-brand-purple transition-colors">
                   <MapPin size={24} className="text-brand-purple group-hover:text-white" />
                 </div>
                 <div>
                   <p className="text-white/40 text-sm font-bold uppercase tracking-widest mb-1">Location</p>
-                  <p className="text-xl font-bold">Bangalore, India</p>
+                  <p className="text-xl font-bold leading-tight">P-, 19, Taratala Rd, CPT Colony, Taratala, Kolkata, West Bengal 700088</p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-12 border-t border-white/10">
+            <div className="pt-12 border-t border-white/10 space-y-8">
               <a 
                 href="https://calendly.com/info-rajnishh/30min"
                 target="_blank"
@@ -71,6 +81,15 @@ export default function ContactPage() {
               >
                 Book a Strategy Call <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
               </a>
+
+              <div className="flex gap-4">
+                <a href="https://www.linkedin.com/in/kumar-rajnish-18136b2b3/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-purple transition-all">
+                  <Linkedin size={20} />
+                </a>
+                <a href="https://www.instagram.com/_rajjnish/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-purple transition-all">
+                  <Instagram size={20} />
+                </a>
+              </div>
             </div>
           </motion.div>
 

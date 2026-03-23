@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Mail, Phone } from 'lucide-react';
+import { Linkedin, Mail, Phone, MapPin, Instagram } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -41,6 +41,10 @@ export default function Footer() {
                 <Mail size={18} className="text-brand-purple" />
                 <span>info.rajnishh@gmail.com</span>
               </li>
+              <li className="flex items-start gap-3 text-white/40">
+                <MapPin size={18} className="text-brand-purple mt-1 shrink-0" />
+                <span className="text-sm leading-relaxed">P-, 19, Taratala Rd, CPT Colony, Taratala, Kolkata, West Bengal 700088</span>
+              </li>
             </ul>
           </div>
 
@@ -49,6 +53,9 @@ export default function Footer() {
             <div className="flex gap-4">
               <a href="https://www.linkedin.com/in/kumar-rajnish-18136b2b3/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-purple transition-all">
                 <Linkedin size={20} />
+              </a>
+              <a href="https://www.instagram.com/_rajjnish/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center hover:bg-brand-purple transition-all">
+                <Instagram size={20} />
               </a>
             </div>
           </div>

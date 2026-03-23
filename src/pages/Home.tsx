@@ -1,10 +1,5 @@
 import React from 'react';
 import AetherHero from '../components/ui/aether-hero';
-import Clients from '../components/sections/Clients';
-import Services from '../components/sections/Services';
-import HowItWorks from '../components/sections/HowItWorks';
-import Results from '../components/sections/Results';
-import CTASection from '../components/sections/CTASection';
 
 export default function HomePage() {
   return (
@@ -21,12 +16,6 @@ export default function HomePage() {
           className="w-full"
         />
       </div>
-
-      <Clients />
-      <Services />
-      <HowItWorks />
-      <Results />
-      <CTASection />
     </main>
   );
 }

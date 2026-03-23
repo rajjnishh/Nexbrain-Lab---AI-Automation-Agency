@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Linkedin, Mail, Phone } from 'lucide-react';
+import { Linkedin, Mail, Phone, Instagram } from 'lucide-react';
 
 export default function Founder() {
   return (
@@ -45,6 +45,14 @@ export default function Founder() {
                 </div>
                 <a href="https://www.linkedin.com/in/kumar-rajnish-18136b2b3/" target="_blank" rel="noopener noreferrer" className="text-lg font-medium">
                   LinkedIn Profile
+                </a>
+              </div>
+              <div className="flex items-center gap-4 text-white/60 hover:text-white transition-colors">
+                <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center">
+                  <Instagram size={20} />
+                </div>
+                <a href="https://www.instagram.com/_rajjnish/" target="_blank" rel="noopener noreferrer" className="text-lg font-medium">
+                  Instagram Profile
                 </a>
               </div>
               <div className="flex items-center gap-4 text-white/60 hover:text-white transition-colors">
