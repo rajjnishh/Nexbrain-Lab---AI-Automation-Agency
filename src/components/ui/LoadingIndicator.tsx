@@ -1,7 +1,35 @@
-import React from 'react';
-import { motion } from 'motion/react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 
-export default function LoadingIndicator() {
+const DEFAULT_MESSAGES = [
+  "Initializing AI modules...",
+  "Fetching latest insights...",
+  "Optimizing neural pathways...",
+  "Syncing with NexBrain Lab...",
+  "Analyzing data patterns...",
+  "Preparing your experience..."
+];
+
+interface LoadingIndicatorProps {
+  message?: string;
+  key?: string;
+}
+
+export default function LoadingIndicator({ message }: LoadingIndicatorProps) {
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
+
+  useEffect(() => {
+    if (message) return;
+    
+    const interval = setInterval(() => {
+      setCurrentMessageIndex((prev) => (prev + 1) % DEFAULT_MESSAGES.length);
+    }, 2500);
+
+    return () => clearInterval(interval);
+  }, [message]);
+
+  const displayMessage = message || DEFAULT_MESSAGES[currentMessageIndex];
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -35,15 +63,21 @@ export default function LoadingIndicator() {
           </span>
         </motion.div>
 
-        {/* Loading Text */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 0.5, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-8 text-[10px] uppercase tracking-[0.5em] text-white font-medium"
-        >
-          Loading Experience
-        </motion.p>
+        {/* Dynamic Loading Text */}
+        <div className="mt-12 h-4 flex items-center justify-center overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={displayMessage}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 0.6, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4 }}
+              className="text-[10px] uppercase tracking-[0.4em] text-white font-medium text-center"
+            >
+              {displayMessage}
+            </motion.p>
+          </AnimatePresence>
+        </div>
       </div>
     </motion.div>
   );

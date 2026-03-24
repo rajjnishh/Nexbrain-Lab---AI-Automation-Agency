@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 
 export type AetherHeroProps = {
   /* ---------- Hero content ---------- */
-  title?: string;
+  title?: React.ReactNode;
   subtitle?: string;
+  badge?: React.ReactNode;
   ctaLabel?: string;
   ctaHref?: string;
   secondaryCtaLabel?: string;
@@ -48,8 +50,10 @@ vec3 scene(vec2 uv) {
   vec3 col=vec3(0);
   uv=vec2(atan(uv.x,uv.y)*2./6.28318,-log(length(uv))+T);
   for (float i=.0; i<3.; i++) {
-    int k=int(mod(i,3.));
-    col[k]+=pattern(uv+i*6./MN);
+    float p = pattern(uv+i*6./MN);
+    col.r += p * (i == 0. ? 0.5 : 0.2);
+    col.g += p * 0.1;
+    col.b += p * (i == 1. ? 0.8 : 1.0);
   }
   return col;
 }
@@ -74,6 +78,7 @@ export default function AetherHero({
   /* Content */
   title = 'Make the impossible feel inevitable.',
   subtitle = 'A minimal hero with a living shader background. Built for product landings, announcements, and portfolio intros.',
+  badge,
   ctaLabel = 'Book a Free Call',
   ctaHref = '#',
   secondaryCtaLabel,
@@ -272,25 +277,60 @@ export default function AetherHero({
             textAlign,
           }}
         >
-          <h1
+          {badge && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              style={{
+                padding: '10px 20px',
+                borderRadius: '100px',
+                background: 'rgba(139, 92, 246, 0.05)',
+                border: '1px solid rgba(139, 92, 246, 0.2)',
+                color: '#a78bfa',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                marginBottom: '2rem',
+                backdropFilter: 'blur(12px)',
+                boxShadow: '0 0 20px rgba(139, 92, 246, 0.1), inset 0 0 10px rgba(139, 92, 246, 0.05)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                marginInline: align === 'center' ? 'auto' : undefined,
+                width: 'fit-content',
+              }}
+            >
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#8b5cf6', boxShadow: '0 0 8px #8b5cf6' }} />
+              {badge}
+            </motion.div>
+          )}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             style={{
               margin: 0,
-              fontSize: 'clamp(2.5rem, 8vw, 5.5rem)',
-              lineHeight: 0.9,
-              letterSpacing: '-0.04em',
+              fontSize: 'clamp(2.5rem, 9vw, 6.5rem)',
+              lineHeight: 0.85,
+              letterSpacing: '-0.05em',
               fontWeight: 700,
-              textShadow: '0 10px 50px rgba(0,0,0,0.8)',
-              background: 'linear-gradient(to bottom, #ffffff, #8b5cf6)',
+              textShadow: '0 15px 60px rgba(0,0,0,0.9)',
+              background: 'linear-gradient(to bottom, #ffffff 30%, #a78bfa 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               fontFamily: 'var(--font-display)',
             }}
           >
             {title}
-          </h1>
+          </motion.h1>
 
           {subtitle ? (
-            <p
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
               style={{
                 marginTop: '1.5rem',
                 fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)',
@@ -305,11 +345,14 @@ export default function AetherHero({
               }}
             >
               {subtitle}
-            </p>
+            </motion.p>
           ) : null}
 
           {(ctaLabel || secondaryCtaLabel) && (
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
               style={{
                 display: 'inline-flex',
                 gap: '12px',
@@ -365,7 +408,7 @@ export default function AetherHero({
                   {secondaryCtaLabel}
                 </a>
               ) : null}
-            </div>
+            </motion.div>
           )}
         </div>
       </div>

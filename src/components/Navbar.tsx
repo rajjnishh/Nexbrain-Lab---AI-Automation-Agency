@@ -45,30 +45,80 @@ export default function Navbar() {
         isScrolled ? 'py-4' : 'py-8'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="text-2xl font-bold font-display tracking-tighter group">
-          NEXBRAIN <span className="text-brand-purple group-hover:text-white transition-colors">LAB</span>
-        </Link>
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between relative">
+        {/* Mobile Logo */}
+        <div className="md:hidden">
+          <Link to="/" className="text-2xl font-black font-display tracking-[-0.05em] group flex items-center gap-2 whitespace-nowrap">
+            <span className="relative">
+              NEXBRAIN
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple group-hover:w-full transition-all duration-500" />
+            </span>
+            <span className="text-brand-purple group-hover:text-white transition-colors px-2 py-0.5 bg-brand-purple/10 rounded-lg border border-brand-purple/20">LAB</span>
+          </Link>
+        </div>
 
-        {/* Desktop Nav - Pill Style */}
-        <div className="hidden md:flex items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-2 py-1.5 shadow-2xl">
-          {navLinks.map((link) => (
-            <div key={link.name} className="relative group/item">
-              {link.isDropdown ? (
-                <div 
-                  className="relative"
-                  onMouseEnter={() => setIsServicesOpen(true)}
-                  onMouseLeave={() => setIsServicesOpen(false)}
-                >
+        {/* Desktop Unified Pill Nav */}
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-4 py-2 shadow-2xl gap-6">
+          {/* Left Links */}
+          <div className="flex items-center gap-1">
+            {navLinks.slice(0, 2).map((link) => (
+              <div key={link.name} className="relative group/item">
+                {link.isDropdown ? (
+                  <div 
+                    className="relative"
+                    onMouseEnter={() => setIsServicesOpen(true)}
+                    onMouseLeave={() => setIsServicesOpen(false)}
+                  >
+                    <Link
+                      to={link.href}
+                      className={`px-5 py-2 rounded-full text-base font-serif transition-all flex items-center gap-2 relative whitespace-nowrap ${
+                        isActive(link.href)
+                          ? 'text-brand-purple italic bg-brand-purple/10'
+                          : 'text-white/70 hover:text-white italic hover:bg-white/5'
+                      }`}
+                    >
+                      {link.name} <ChevronDown size={14} className={`transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                      {isActive(link.href) && (
+                        <motion.div
+                          layoutId="activeNav"
+                          className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-purple rounded-full shadow-[0_0_8px_#8b5cf6]"
+                        />
+                      )}
+                    </Link>
+
+                    <AnimatePresence>
+                      {isServicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          className="absolute top-full left-0 mt-4 w-64 bg-brand-black/95 backdrop-blur-2xl border border-white/10 rounded-3xl p-4 shadow-2xl"
+                        >
+                          <div className="flex flex-col gap-1">
+                            {serviceItems.map((item) => (
+                              <Link
+                                key={item.name}
+                                to={item.href}
+                                className="px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all text-sm font-medium"
+                              >
+                                {item.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
                   <Link
                     to={link.href}
-                    className={`px-6 py-2.5 rounded-full text-lg font-serif transition-all flex items-center gap-2 relative ${
+                    className={`px-5 py-2 rounded-full text-base font-serif transition-all relative whitespace-nowrap ${
                       isActive(link.href)
-                        ? 'text-brand-purple italic bg-brand-purple/10'
-                        : 'text-white/70 hover:text-white italic hover:bg-white/5'
+                        ? 'text-brand-purple bg-brand-purple/10'
+                        : 'text-white/70 hover:text-white hover:bg-white/5'
                     }`}
                   >
-                    {link.name} <ChevronDown size={14} className={`transition-transform duration-300 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                    {link.name}
                     {isActive(link.href) && (
                       <motion.div
                         layoutId="activeNav"
@@ -76,72 +126,63 @@ export default function Navbar() {
                       />
                     )}
                   </Link>
+                )}
+              </div>
+            ))}
+          </div>
 
-                  {/* Dropdown Menu */}
-                  <AnimatePresence>
-                    {isServicesOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute top-full left-0 mt-2 w-64 bg-brand-black/95 backdrop-blur-2xl border border-white/10 rounded-3xl p-4 shadow-2xl"
-                      >
-                        <div className="flex flex-col gap-1">
-                          {serviceItems.map((item) => (
-                            <Link
-                              key={item.name}
-                              to={item.href}
-                              className="px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/5 transition-all text-sm font-medium"
-                            >
-                              {item.name}
-                            </Link>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ) : (
-                <Link
-                  to={link.href}
-                  className={`px-6 py-2.5 rounded-full text-lg font-serif transition-all relative ${
-                    isActive(link.href)
-                      ? 'text-brand-purple bg-brand-purple/10'
-                      : 'text-white/70 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  {link.name}
-                  {isActive(link.href) && (
-                    <motion.div
-                      layoutId="activeNav"
-                      className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-purple rounded-full shadow-[0_0_8px_#8b5cf6]"
-                    />
-                  )}
-                </Link>
-              )}
-            </div>
-          ))}
+          {/* Center Logo */}
+          <Link to="/" className="text-xl font-black font-display tracking-[-0.05em] group flex items-center gap-2 mx-2 whitespace-nowrap">
+            <span className="relative">
+              NEXBRAIN
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-purple group-hover:w-full transition-all duration-500" />
+            </span>
+            <span className="text-brand-purple group-hover:text-white transition-colors px-2 py-0.5 bg-brand-purple/10 rounded-lg border border-brand-purple/20">LAB</span>
+          </Link>
+
+          {/* Right Links */}
+          <div className="flex items-center gap-1">
+            {navLinks.slice(2).map((link) => (
+              <Link
+                key={link.name}
+                to={link.href}
+                className={`px-5 py-2 rounded-full text-base font-serif transition-all relative whitespace-nowrap ${
+                  isActive(link.href)
+                    ? 'text-brand-purple bg-brand-purple/10'
+                    : 'text-white/70 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                {link.name}
+                {isActive(link.href) && (
+                  <motion.div
+                    layoutId="activeNav"
+                    className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-brand-purple rounded-full shadow-[0_0_8px_#8b5cf6]"
+                  />
+                )}
+              </Link>
+            ))}
+          </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="hidden md:block">
-          <a
-            href="https://calendly.com/info-rajnishh/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-8 py-3 bg-brand-purple hover:bg-brand-purple/90 text-white rounded-full text-sm font-bold transition-all shadow-lg shadow-brand-purple/20 hover:shadow-brand-purple/40 hover:-translate-y-0.5 active:translate-y-0 inline-block"
+        {/* Right CTA & Mobile Toggle */}
+        <div className="flex items-center gap-4 ml-auto">
+          <div className="hidden md:block">
+            <a
+              href="https://calendly.com/info-rajnishh/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 bg-brand-purple hover:bg-brand-purple/90 text-white rounded-full text-sm font-bold transition-all shadow-lg shadow-brand-purple/20 hover:shadow-brand-purple/40 hover:-translate-y-0.5 active:translate-y-0 inline-block whitespace-nowrap"
+            >
+              Book a Free Call
+            </a>
+          </div>
+          <button
+            className="md:hidden w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            Book a Free Call
-          </a>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
-
-        {/* Mobile Toggle */}
-        <button
-          className="md:hidden w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
       </div>
 
       {/* Mobile Menu */}
